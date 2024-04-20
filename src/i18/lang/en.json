@@ -1,0 +1,41 @@
+{
+    "head": {
+      "bride": "Alice",
+      "groom": "Stephane",
+      "greeting": "Alice & Stephane",
+      "date": "19.07.2025",
+      "venue": "Manoir de Villefermoy, Route de Fontainebleau, 77820 Les Écrennes, France"
+    },
+    "countdown": {
+      "greeting": "The best day of our life is coming up!",
+      "days": "days",
+      "hours": "hours",
+      "minutes": "minutes",
+      "seconds": "seconds"
+    },
+    "venue": {
+      "greeting": "You're invited to our wedding",
+      "description": "Close to airports and in the middle of the countryside, this manor is a dreamy place to celebrate with you that so special day ❤️",
+      "message": "It will take place on the 19th of July 2025 at the Manor of Villerfermoy from 4PM for the non religious ceremony",
+      "place": "Manor of Villerfermoy",
+      "address": "Route de Fontainebleau, 77820 Les Écrennes",
+      "country": "France"
+    },
+    "form": {
+      "greeting": "We would love to spend that special day with you",
+      "message": "Please do not forget to let us know if you can make it via the form below",
+      "email": "Email Address",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "postalAddress": "Postal Address",
+      "accompany": "Will you be accompanied?",
+      "children": "Bringing childrens with you?",
+      "foodRestriction": "Food Restrictions",
+      "foodRestrictionPrecise": "Please precise",
+      "rsvp": "RSVP"
+    },
+    "about": {
+      "title": "About Us",
+      "description": "We are a company passionate about building beautiful and functional websites."
+    }
+}

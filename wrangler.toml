@@ -1,0 +1,5 @@
+compatibility-date ="2024-04-25"
+name = "wedding"
+kv_namespaces = [
+    { binding = "WEDDING", id = "63e6efce6ad0435fa17e8ada66fc7904" }
+]
