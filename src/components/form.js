@@ -7,7 +7,7 @@ import axios from 'axios';
 import { v4 as uuid } from 'uuid'
 import { Button, CardHeader, Grid, Divider, CardBody, CardFooter, Link, Card, Col, Input, RadioGroup, Radio, Select, NextUIProvider } from '@nextui-org/react';
 
-const Form = ({locale}) => {
+const Form = ({locale, inviteId}) => {
 
   const translations = getTranslations(locale)
   const turnstile = useTurnstile();
@@ -17,17 +17,20 @@ const Form = ({locale}) => {
     uuid: '',
     firstName: '',
     lastName: '',
+    inviteId: '',
     email: '',
-    rsvp: false,
+    brunch: false,
     children: 0,
     foodRestriction: 'None', // Default value set to "None"
     accompany: false,
     accompanyFirstName: '',
-    accompantLastName: '',
+    accompanyLastName: '',
     token: ''
   });
-  const [formError, setFormError] = useState(null);
-  const [challengeSolved, setChallengeSolved] = useState(null);
+  const [inviteValid, setInviteValid] = useState(false);
+  const [inviteError, setInviteError] = useState();
+  const [formError, setFormError] = useState();
+  const [challengeSolved, setChallengeSolved] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleChange = (e) => {
@@ -56,6 +59,83 @@ const Form = ({locale}) => {
     }));
     console.log('resolved challenge: ' + formData.token)
   }
+
+  const checkInvite = async (inviteId) => {
+    try {
+      console.log(formData)
+      const response = await axios({
+        method: 'POST',
+        url: `/checkInvite?inviteId=${inviteId}`,
+        data: formData
+      });
+      
+      if (response && response.status === 200) {
+        setInviteError(false);
+        setInviteValid(true);
+        setFormData(prevData => ({
+          ...prevData,
+          firstName: response.data.firstName
+        }));
+        setFormData(prevData => ({
+          ...prevData,
+          lastName: response.data.lastName
+        }));
+        setFormData(prevData => ({
+          ...prevData,
+          email: response.data.email
+        }));
+        setFormData(prevData => ({
+          ...prevData,
+          brunch: response.data.brunch
+        }));
+        setFormData(prevData => ({
+          ...prevData,
+          children: response.data.children
+        }));
+        setFormData(prevData => ({
+          ...prevData,
+          foodRestriction: response.data.foodRestriction
+        }));
+        if (response.data.accompanyFirstName != '') {
+          setFormData(prevData => ({
+            ...prevData,
+            accompany: true
+          }));
+          setFormData(prevData => ({
+            ...prevData,
+            accompanyFirstName: response.data.accompanyFirstName
+          }));
+          setFormData(prevData => ({
+            ...prevData,
+            accompanyLastName: response.data.accompanyLastName
+          }));
+        }
+        
+        console.log('Form submitted successfully:', response.data);
+      } else {
+        console.log(response.data)
+        setInviteError(true)
+        console.log(inviteError)
+      }
+    } catch (error) {
+      //console.log(response.data)
+      console.error('Error submitting form:', error);
+      setInviteError(true);
+    }
+  }
+
+  const handleInvite = async (e) => {
+    e.preventDefault();
+    if (challengeSolved) { 
+        setFormData(prevData => ({
+          ...prevData,
+          inviteId: inviteId || formData.inviteId
+        }));
+        checkInvite(inviteId || formData.inviteId) 
+    } else {
+      setInviteError(true)
+    }
+  } 
 
   const handleRestart = (e) => {
     e.preventDefault();
@@ -103,7 +183,54 @@ const Form = ({locale}) => {
         <img src='/images/separator.png' className='opacity-70 bg-position-center mx-auto m-4'></img>
         <p className="m-4 mb-3 justify-center text-center font-poppins">{translations.form.message}</p>
       </div>
-      { !formSubmitted && (
+      { !inviteValid && (
+        <form className="max-w-md mx-auto mt-8 p-6 bg-amber-50 rounded-2xl shadow-lg" onSubmit={handleInvite}>
+        <div className="mb-4 flex flex-col">
+          <label className="block mb-1">{translations.form.inviteId}</label>
+          { !inviteId && (<input
+            type="text"
+            name="inviteId"
+            value={formData.inviteId}
+            onChange={handleChange}
+            className="form-input"
+            required
+          />)}
+          { inviteId && (<input
+            type="text"
+            name="inviteId"
+            value={inviteId}
+            onLoad={handleInvite}
+            onChange={handleChange}
+            className="form-input"
+            readonly
+            placeholder={inviteId}
+          />)}
+        </div>
+        <div className='justify-center m-4'>
+          <Turnstile
+          className='justify-center'
+          widgetId='test'
+          theme='light'
+          size='normal'
+          sitekey="0x4AAAAAAAYQdZI9-4itKgdR"
+          autoResetOnExpire='true'
+          onVerify={(token) => {
+            handleChallenge(token)
+            setChallengeSolved(true)
+            console.log('challenge ok: ' + JSON.stringify(token))
+          }}
+        /></div>
+        <div className="text-center">
+          <button type="submit" className="py-2 px-4 bg-amber-500 text-white rounded hover:bg-amber-600 focus:outline-none focus:bg-amber-600">Submit</button>
+        </div>
+        {inviteError && (
+          <div className='mt-4 text-red-700 text-center'>
+            Unrecognized invitation ID
+          </div>
+        )}
+        </form>
+      )}
+      { !formSubmitted && inviteValid && !inviteError && (
         <form className="max-w-md mx-auto mt-8 p-6 bg-amber-50 rounded-2xl shadow-lg" onSubmit={handleSubmit}>
         <h2 className="text-2xl font-bold mb-6 text-center">RSVP Form</h2>
         <div className="mb-4 flex flex-col">
@@ -141,11 +268,11 @@ const Form = ({locale}) => {
         </div>
         <div className="mb-4 flex flex-col">
           <label className="block mb-1">
-          {translations.form.rsvp}
+          {translations.form.brunch}
             <input
               type="checkbox"
-              name="rsvp"
-              checked={formData.rsvp}
+              name="brunch"
+              checked={formData.brunch}
               onChange={handleChange}
               className="ml-2 form-checkbox"
             />
@@ -216,8 +343,8 @@ const Form = ({locale}) => {
               <label className="block mb-1">{translations.form.lastName}</label>
               <input
                 type="text"
-                name="accompantLastName"
-                value={formData.accompantLastName}
+                name="accompanyLastName"
+                value={formData.accompanyLastName}
                 onChange={handleChange}
                 className="form-input"
                 required
@@ -270,20 +397,28 @@ const Form = ({locale}) => {
               <td>{formData.email}</td>
             </tr>
             <tr>
-              <td>{translations.form.rsvp}</td>
-              <td>{JSON.stringify(formData.rsvp)}</td>
+              <td>{translations.form.brunch}</td>
+              <td>{JSON.stringify(formData.brunch)}</td>
             </tr>
             <tr>
               <td>{translations.form.children}</td>
               <td>{formData.children}</td>
             </tr>
             <tr>
+              <td>{translations.form.foodRestriction}</td>
+              <td>{formData.foodRestriction}</td>
+            </tr>
+            <tr>
               <td>{translations.form.accompany}</td>
               <td>{JSON.stringify(formData.accompany)}</td>
             </tr>
             <tr>
-              <td>{translations.form.foodRestriction}</td>
-              <td>{formData.foodRestriction}</td>
+              <td>{translations.form.accompanyFirstName}</td>
+              <td>{JSON.stringify(formData.accompanyFirstName)}</td>
+            </tr>
+            <tr>
+              <td>{translations.form.accompanyLastName}</td>
+              <td>{JSON.stringify(formData.accompanyLastName)}</td>
             </tr>
           </table>
           </div>
