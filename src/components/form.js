@@ -10,7 +10,6 @@ import { Button, CardHeader, Grid, Divider, CardBody, CardFooter, Link, Card, Co
 const Form = ({locale, inviteId}) => {
 
   const translations = getTranslations(locale)
-  const turnstile = useTurnstile();
 
   const [formData, setFormData] = useState({
     timestamp: '',
@@ -18,6 +17,7 @@ const Form = ({locale, inviteId}) => {
     firstName: '',
     lastName: '',
     inviteId: '',
+    rsvp: false,
     email: '',
     brunch: false,
     children: 0,
@@ -32,6 +32,8 @@ const Form = ({locale, inviteId}) => {
   const [formError, setFormError] = useState();
   const [challengeSolved, setChallengeSolved] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [rsvp, setRsvp] = useState(false);
+
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -40,6 +42,15 @@ const Form = ({locale, inviteId}) => {
       [name]: type === 'checkbox' ? checked : value
     }));
      
+  };
+
+  const handleRsvp = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData(prevData => ({
+      ...prevData,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+     setRsvp(true)
   };
   
   const handleChallenge = (token) => {
@@ -96,7 +107,7 @@ const Form = ({locale, inviteId}) => {
           ...prevData,
           foodRestriction: response.data.foodRestriction
         }));
-        if (response.data.accompanyFirstName != '') {
+        if (response.data.accompanyFirstName != null && response.data.accompanyFirstName != '') {
           setFormData(prevData => ({
             ...prevData,
             accompany: true
@@ -135,7 +146,7 @@ const Form = ({locale, inviteId}) => {
     } else {
       setInviteError(true)
     }
-  } 
+  }
 
   const handleRestart = (e) => {
     e.preventDefault();
@@ -202,7 +213,7 @@ const Form = ({locale, inviteId}) => {
             onLoad={handleInvite}
             onChange={handleChange}
             className="form-input"
-            readonly
+            disabled
             placeholder={inviteId}
           />)}
         </div>
@@ -221,16 +232,33 @@ const Form = ({locale, inviteId}) => {
           }}
         /></div>
         <div className="text-center">
-          <button type="submit" className="py-2 px-4 bg-amber-500 text-white rounded hover:bg-amber-600 focus:outline-none focus:bg-amber-600">Submit</button>
+          <button type="submit" className="py-2 px-4 bg-amber-500 text-white rounded hover:bg-amber-600 focus:outline-none focus:bg-amber-600">{translations.form.submit}</button>
         </div>
         {inviteError && (
           <div className='mt-4 text-red-700 text-center'>
-            Unrecognized invitation ID
+            {locale == "en" ? "Wrong invitation ID" : "Numéro d'invitation non reconnu"}
           </div>
         )}
         </form>
       )}
-      { !formSubmitted && inviteValid && !inviteError && (
+      {!rsvp && inviteValid && (
+        <form className="max-w-md mx-auto mt-8 p-6 bg-amber-50 rounded-2xl shadow-lg" onSubmit={handleSubmit}>
+        <h2 className="text-2xl font-bold mb-6 text-center">RSVP Form</h2>
+        <div className="mb-4 flex flex-col">
+        <label className="block mb-1">
+          {translations.form.rsvp}
+            <input
+              type="checkbox"
+              name="rsvp"
+              checked={formData.rsvp}
+              onChange={handleRsvp}
+              className="ml-2 form-checkbox"
+            />
+          </label>
+        </div>
+        </form>
+      )}
+      { !formSubmitted && rsvp && inviteValid && !inviteError && (
         <form className="max-w-md mx-auto mt-8 p-6 bg-amber-50 rounded-2xl shadow-lg" onSubmit={handleSubmit}>
         <h2 className="text-2xl font-bold mb-6 text-center">RSVP Form</h2>
         <div className="mb-4 flex flex-col">
@@ -285,6 +313,7 @@ const Form = ({locale, inviteId}) => {
             name="children"
             value={formData.children}
             onChange={handleChange}
+            defaultValue='0'
             className="form-input font-gray-500"
           />
         </div>
@@ -368,11 +397,11 @@ const Form = ({locale, inviteId}) => {
         /></div>
 
         <div className="text-center">
-          <button type="submit" className="py-2 px-4 bg-amber-500 text-white rounded hover:bg-amber-600 focus:outline-none focus:bg-amber-600">Submit</button>
+          <button type="submit" className="py-2 px-4 bg-amber-500 text-white rounded hover:bg-amber-600 focus:outline-none focus:bg-amber-600">{translations.form.submit}</button>
         </div>
         {formError && (
           <div className='mt-4 text-red-700 text-center'>
-            Form submission failed, please retry
+            {locale == "en" ? "Form submission failed, please retry" : "Validation du formulaire échoué, veuillez recommencer"}
           </div>
         )}
       </form>
@@ -380,7 +409,7 @@ const Form = ({locale, inviteId}) => {
       { formSubmitted && (
         <div className="max-w-md break-all mx-auto mt-8 p-6 bg-amber-50 rounded-2xl shadow-lg">
           <div className='font-bold'>
-            The form was succesffuly submitted with these information
+          {translations.form.submitted}
           </div>
           <div className='break-all'>
           <table className='break-all divide-y mt-2 mb-2 divide-gray-200 dark:divide-neutral-700'>
@@ -423,7 +452,7 @@ const Form = ({locale, inviteId}) => {
           </table>
           </div>
           <div className="text-center">
-          <button onClick={handleRestart} className="py-2 px-4 bg-amber-500 text-white rounded hover:bg-amber-600 focus:outline-none focus:bg-amber-600">Restart</button>
+          <button onClick={handleRestart} className="py-2 px-4 bg-amber-500 text-white rounded hover:bg-amber-600 focus:outline-none focus:bg-amber-600">{translations.form.restart}</button>
         </div>
         </div>
       )}

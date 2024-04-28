@@ -5,5 +5,8 @@ kv_namespaces = [
     { binding = "WEDDING", id = "63e6efce6ad0435fa17e8ada66fc7904" }
 ]
 d1_databases = [
-    {binding = "DB", database_name = "wedding", database_id = "a942f5fa-b28d-46f7-a398-4e2fb98ecae1"}
+    {binding = "DB", database_name = "wedding", database_id = "04a5a541-e119-41d9-b249-7d2e16ff49c9"}
+]
+r2_buckets = [
+    {binding = 'R2', bucket_name = "wedding"}
 ]

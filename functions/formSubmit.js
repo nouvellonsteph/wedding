@@ -1,5 +1,20 @@
 import { v4 as uuid } from 'uuid'
 
+ async function sendWebHook(dest, body) {
+    const headers = new Headers()
+    console.log('sending webhook to ' + dest)
+    headers.append("Content-Type", "application/json")
+
+    const options = {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+    }
+
+    const result = await fetch(dest, options)
+    const outcome = await result.json();
+    return outcome
+}
 async function validateChallenge(token, ip, secret) {
 
     // Validate the token by calling the `/siteverify` API.
@@ -27,24 +42,36 @@ export async function onRequest(context) {
     const challenge = await validateChallenge(body.token, context.request.headers.get('CF-Connecting-IP'), context.env.TURNSTILE_SECRET)
     console.log(`challenge response ${challenge.success}`)
 
+    sendWebHook(context.env.WEB_HOOK_DESTINATION, body)
+
     //TODO update the condition to validate incoming
     if (challenge.success) {
         try {
-            await context.env.WEDDING.put(body.firstName+'_'+body.lastName+'_'+body.uuid, JSON.stringify(body));
+            //await context.env.WEDDING.put(body.firstName+'_'+body.lastName+'_'+body.uuid, JSON.stringify(body));
             console.log(body)
             let query = `UPDATE guests 
-             SET brunch = '${body.brunch}', 
+             SET brunch = '${body.brunch}',
+                 firstName = '${body.firstName}',
+                 lastName = '${body.lastName}',
+                 lastUpdated = '${Date.now()}', 
                  children = '${body.children}', 
+                 rsvp = '${body.rsvp}',
                  foodRestriction = '${body.foodRestriction}', 
+                 accompany = '${body.accompany}',
                  accompanyFirstName = '${body.accompanyFirstName}', 
                  accompanyLastName = '${body.accompanyLastName}' 
              WHERE guestId = '${body.inviteId}';`
-            let update = `INSERT INTO updates (uuid, createdAt, brunch, children, foodRestriction, accompanyFirstName, accompanyLastName, guestId)
+            let update = `INSERT INTO updates (uuid, createdAt, firstName, lastName, email, rsvp, brunch, children, foodRestriction, accompany, accompanyFirstName, accompanyLastName, guestId)
              VALUES ('${uuid()}',
                  '${Date.now()}',
+                 '${body.firstName}',
+                 '${body.lastName}',
+                 '${body.email}',
+                 '${body.rsvp}',
                  '${body.brunch}', 
                  '${body.children}', 
-                 '${body.foodRestriction}', 
+                 '${body.foodRestriction}',
+                 '${body.accompany}',
                  '${body.accompanyFirstName}', 
                  '${body.accompanyLastName}',
                  '${body.inviteId}');`
@@ -54,6 +81,7 @@ export async function onRequest(context) {
             await guestQuery.all();
             const updateQuery = context.env.DB.prepare(update);
             await updateQuery.all();
+            console.log(sendWebHook(context.env.WEB_HOOK_DESTINATION, body))
         } catch (err) {
             return new Response(err, { status: 500 });
         }

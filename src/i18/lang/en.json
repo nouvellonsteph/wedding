@@ -3,11 +3,11 @@
       "bride": "Alice",
       "groom": "Stephane",
       "greeting": "Alice & Stephane",
-      "date": "19.07.2025",
+      "date": "9th of August 2025, 1PM",
       "venue": "Manoir de Villefermoy, Route de Fontainebleau, 77820 Les Écrennes, France"
     },
     "countdown": {
-      "greeting": "The best day of our life is coming up!",
+      "greeting": "Our wedding day is coming and you're invited!",
       "days": "days",
       "hours": "hours",
       "minutes": "minutes",
@@ -23,19 +23,23 @@
     },
     "form": {
       "greeting": "We would love to spend that special day with you",
-      "inviteId": "Please input the invite number you received",
+      "inviteId": "Your invite number",
       "message": "Please do not forget to let us know if you can make it via the form below",
       "email": "Email Address",
       "firstName": "First Name",
       "lastName": "Last Name",
+      "rsvp": "Will you present to our wedding?",
       "postalAddress": "Postal Address",
       "accompany": "Will you be accompanied?",
       "accompanyFirstName": "Accompany First Name",
       "accompanyLastName": "Accompany Last Name",
-      "children": "Bringing childrens with you?",
+      "children": "Bringing children with you?",
       "foodRestriction": "Food Restrictions",
       "foodRestrictionPrecise": "Please precise",
-      "brunch": "Will you be with us for the brunch on Sunday?"
+      "brunch": "Will you be with us for the brunch on Sunday?",
+      "submit": "RSVP",
+      "submitted": "Thank you so much! We received your answer.",
+      "restart": "Restart"
     },
     "about": {
       "title": "About Us",

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import '../style/countdown.css'
 import { getTranslations } from '../i18/translations'
 
-const COUNTDOWN_TARGET = new Date("2025-07-19T16:59:59");
+const COUNTDOWN_TARGET = new Date("2025-08-09T14:00:00");
 
 
 const getTimeLeft = () => {

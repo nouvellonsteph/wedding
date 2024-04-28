@@ -3,11 +3,11 @@
       "bride": "Alice",
       "groom": "Stephane", 
       "greeting": "Alice & Stéphane",
-      "date": "Le 19 Juillet 2025",
+      "date": "Le 9 Aout 2025 à 13h",
       "venue": "Manoir de Villefermoy, Route de Fontainebleau, 77820 Les Écrennes, France"
     },
     "countdown": {
-      "greeting": "Le meilleur jour de notre vie approche !",
+      "greeting": "Notre mariage approche et vous y êtes invité !",
       "days": "jours",
       "hours": "heures",
       "minutes": "minutes",
@@ -23,11 +23,12 @@
     },
     "form": {
       "greeting": "On adorerait partager ce jour spécial avec vous",
-      "inviteId": "Veuillez saisir le numéro d'invitation que vous avez reçu",
+      "inviteId": "Votre numéro d'invitation",
       "message": "N'oubliez pas de nous dire si vous pourrez vous joindre à nous en remplissant le formulaire ci-dessous",
       "email": "Adresse Email",
       "firstName": "Prénom",
       "lastName": "Nom",
+      "rsvp": "Serez-vous présent à notre mariage ?",
       "postalAddress": "Adresse Postale",
       "accompany": "Serez-vous accompagné ?",
       "accompanyFirstName": "Prénom de l'accompagnant",
@@ -35,7 +36,10 @@
       "children": "Venez-vous avec des enfants ?",
       "foodRestriction": "Restriction alimentaire",
       "foodRestrictionPrecise": "Veuillez préciser",
-      "brunch": "Serez-vous avec nous pour le brunch le lendemain ?"
+      "brunch": "Serez-vous avec nous pour le brunch le lendemain ?",
+      "submit": "Confirmer ma présence",
+      "submitted": "Merci beaucoup, votre réponse est prise en compte",
+      "restart": "Recommencer"
     },
     "about": {
       "title": "À propos de nous",
