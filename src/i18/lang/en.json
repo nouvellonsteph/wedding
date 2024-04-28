@@ -28,6 +28,7 @@
       "email": "Email Address",
       "firstName": "First Name",
       "lastName": "Last Name",
+      "rsvp": "Will you present to our wedding?",
       "postalAddress": "Postal Address",
       "accompany": "Will you be accompanied?",
       "accompanyFirstName": "Accompany First Name",

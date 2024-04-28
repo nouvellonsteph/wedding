@@ -10,7 +10,6 @@ import { Button, CardHeader, Grid, Divider, CardBody, CardFooter, Link, Card, Co
 const Form = ({locale, inviteId}) => {
 
   const translations = getTranslations(locale)
-  const turnstile = useTurnstile();
 
   const [formData, setFormData] = useState({
     timestamp: '',
@@ -18,6 +17,7 @@ const Form = ({locale, inviteId}) => {
     firstName: '',
     lastName: '',
     inviteId: '',
+    rsvp: false,
     email: '',
     brunch: false,
     children: 0,
@@ -32,6 +32,8 @@ const Form = ({locale, inviteId}) => {
   const [formError, setFormError] = useState();
   const [challengeSolved, setChallengeSolved] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [rsvp, setRsvp] = useState(false);
+
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -40,6 +42,15 @@ const Form = ({locale, inviteId}) => {
       [name]: type === 'checkbox' ? checked : value
     }));
      
+  };
+
+  const handleRsvp = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData(prevData => ({
+      ...prevData,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+     setRsvp(true)
   };
   
   const handleChallenge = (token) => {
@@ -96,7 +107,7 @@ const Form = ({locale, inviteId}) => {
           ...prevData,
           foodRestriction: response.data.foodRestriction
         }));
-        if (response.data.accompanyFirstName != '') {
+        if (response.data.accompanyFirstName != null && response.data.accompanyFirstName != '') {
           setFormData(prevData => ({
             ...prevData,
             accompany: true
@@ -135,7 +146,7 @@ const Form = ({locale, inviteId}) => {
     } else {
       setInviteError(true)
     }
-  } 
+  }
 
   const handleRestart = (e) => {
     e.preventDefault();
@@ -230,7 +241,24 @@ const Form = ({locale, inviteId}) => {
         )}
         </form>
       )}
-      { !formSubmitted && inviteValid && !inviteError && (
+      {!rsvp && inviteValid && (
+        <form className="max-w-md mx-auto mt-8 p-6 bg-amber-50 rounded-2xl shadow-lg" onSubmit={handleSubmit}>
+        <h2 className="text-2xl font-bold mb-6 text-center">RSVP Form</h2>
+        <div className="mb-4 flex flex-col">
+        <label className="block mb-1">
+          {translations.form.rsvp}
+            <input
+              type="checkbox"
+              name="rsvp"
+              checked={formData.rsvp}
+              onChange={handleRsvp}
+              className="ml-2 form-checkbox"
+            />
+          </label>
+        </div>
+        </form>
+      )}
+      { !formSubmitted && rsvp && inviteValid && !inviteError && (
         <form className="max-w-md mx-auto mt-8 p-6 bg-amber-50 rounded-2xl shadow-lg" onSubmit={handleSubmit}>
         <h2 className="text-2xl font-bold mb-6 text-center">RSVP Form</h2>
         <div className="mb-4 flex flex-col">
@@ -285,6 +313,7 @@ const Form = ({locale, inviteId}) => {
             name="children"
             value={formData.children}
             onChange={handleChange}
+            defaultValue='0'
             className="form-input font-gray-500"
           />
         </div>
