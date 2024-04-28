@@ -7,6 +7,3 @@ kv_namespaces = [
 d1_databases = [
     {binding = "DB", database_name = "wedding", database_id = "a942f5fa-b28d-46f7-a398-4e2fb98ecae1"}
 ]
-[vars]
-TURNSTILE_SECRET = "0x4AAAAAAAYQdXgxJTl4RGF_ICVV6U4uaMs"
-TURNSTILE_SECRET_INVITE = "0x4AAAAAAAYQdXgxJTl4RGF_ICVV6U4uaMs"
