@@ -23,16 +23,19 @@
     },
     "form": {
       "greeting": "We would love to spend that special day with you",
+      "inviteId": "Please input the invite number you received",
       "message": "Please do not forget to let us know if you can make it via the form below",
       "email": "Email Address",
       "firstName": "First Name",
       "lastName": "Last Name",
       "postalAddress": "Postal Address",
       "accompany": "Will you be accompanied?",
+      "accompanyFirstName": "Accompany First Name",
+      "accompanyLastName": "Accompany Last Name",
       "children": "Bringing childrens with you?",
       "foodRestriction": "Food Restrictions",
       "foodRestrictionPrecise": "Please precise",
-      "rsvp": "RSVP"
+      "brunch": "Will you be with us for the brunch on Sunday?"
     },
     "about": {
       "title": "About Us",

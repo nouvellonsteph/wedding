@@ -23,16 +23,19 @@
     },
     "form": {
       "greeting": "On adorerait partager ce jour spécial avec vous",
+      "inviteId": "Veuillez saisir le numéro d'invitation que vous avez reçu",
       "message": "N'oubliez pas de nous dire si vous pourrez vous joindre à nous en remplissant le formulaire ci-dessous",
       "email": "Adresse Email",
       "firstName": "Prénom",
       "lastName": "Nom",
       "postalAddress": "Adresse Postale",
       "accompany": "Serez-vous accompagné ?",
+      "accompanyFirstName": "Prénom de l'accompagnant",
+      "accompanyLastName": "Nom de l'accompagnant",
       "children": "Venez-vous avec des enfants ?",
       "foodRestriction": "Restriction alimentaire",
       "foodRestrictionPrecise": "Veuillez préciser",
-      "rsvp": "Serez-vous présent ?"
+      "brunch": "Serez-vous avec nous pour le brunch le lendemain ?"
     },
     "about": {
       "title": "À propos de nous",

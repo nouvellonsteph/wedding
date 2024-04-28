@@ -10,8 +10,9 @@ import {Divider, Link} from "@nextui-org/react";
 import '../style/divider.css'
 
 export default function Home() {
-  const query = useSearchParams().get('lang')
-  const locale = query !== undefined ? query : 'fr'
+  const lang = useSearchParams().get('lang')
+  const inviteId = useSearchParams().get('inviteId')
+  const locale = lang !== undefined ? lang : 'fr'
 
   return (
     <NextUIProvider>
@@ -37,7 +38,7 @@ export default function Home() {
       </div>
       <img src="/images/wavesOpacityAmber.svg" className="bg-rose-50 w-screen"></img>
       <div className="bg-rose-50">
-        <Form locale={locale}/>
+        <Form locale={locale} inviteId={inviteId}/>
       </div>
     </main>
     </NextUIProvider>

@@ -1,5 +1,11 @@
-compatibility-date ="2024-04-25"
+compatibility_date ="2024-04-25"
 name = "wedding"
+pages_build_output_dir= "./build"
 kv_namespaces = [
     { binding = "WEDDING", id = "63e6efce6ad0435fa17e8ada66fc7904" }
 ]
+d1_databases = [
+    {binding = "DB", database_name = "wedding", database_id = "a942f5fa-b28d-46f7-a398-4e2fb98ecae1"}
+]
+[vars]
+TURNSTILE_SECRET = "0x4AAAAAAAYQdXgxJTl4RGF_ICVV6U4uaMs"
