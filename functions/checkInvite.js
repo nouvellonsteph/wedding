@@ -24,7 +24,7 @@ export async function onRequest(context) {
     const newRequest = new Request(context.request)
     const url = new URL(newRequest.url)
     const body = await newRequest.json()
-    let challenge = await validateChallenge(body.token, context.request.headers.get('CF-Connecting-IP'), context.env.TURNSTILE_SECRET)
+    let challenge = await validateChallenge(body.token, context.request.headers.get('CF-Connecting-IP'), context.env.TURNSTILE_SECRET_INVITE)
     console.log(`challenge response ${challenge.success}`)
     
     const inviteId = url.searchParams.get('inviteId')
