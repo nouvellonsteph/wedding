@@ -53,6 +53,7 @@ export async function onRequest(context) {
              SET brunch = '${body.brunch}',
                  firstName = '${body.firstName}',
                  lastName = '${body.lastName}',
+                 email = '${body.email}',
                  lastUpdated = '${Date.now()}', 
                  children = '${body.children}', 
                  rsvp = '${body.rsvp}',
