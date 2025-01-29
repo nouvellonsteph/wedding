@@ -41,6 +41,15 @@
       "submitted": "Thank you so much! We received your answer.",
       "restart": "Restart"
     },
+    "menu": {
+      "abstract": "Program for the day",
+      "arrival": ["10AM","Arrival to the Manor 🏰"],
+      "welcome": ["1PM","Welcome Cocktail 🤗"],
+      "ceremony": ["4PM","Ceremony 💍"],
+      "cocktail": ["6PM","Cocktail 🍸"],
+      "dinner": ["8PM","Dinner 🍽️"],
+      "party": ["10PM","Party 🎉"]
+    },
     "about": {
       "title": "About Us",
       "description": "We are a company passionate about building beautiful and functional websites."

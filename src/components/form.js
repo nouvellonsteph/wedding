@@ -187,7 +187,7 @@ const Form = ({locale, inviteId}) => {
   };
   
   return (
-    <div className='md:flex items-center justify-between'>
+    <div id="form" className='md:flex items-center justify-between'>
     <div className='md:w-1/2 mx-auto p-10 font-poppins'>
       <div className="max-w-md mx-auto">
         <h2 className="text-5xl font-niconne font-bold text-center">{translations.form.greeting}</h2>
@@ -195,7 +195,7 @@ const Form = ({locale, inviteId}) => {
         <p className="m-4 mb-3 justify-center text-center font-poppins">{translations.form.message}</p>
       </div>
       { !inviteValid && (
-        <form className="max-w-md mx-auto mt-8 p-6 bg-amber-50 rounded-2xl shadow-lg" onSubmit={handleInvite}>
+        <form className="max-w-md mx-auto mt-8 p-6 bg-rose-50 rounded-2xl shadow-lg" onSubmit={handleInvite}>
         <div className="mb-4 flex flex-col">
           <label className="block mb-1">{translations.form.inviteId}</label>
           { !inviteId && (<input
@@ -458,7 +458,7 @@ const Form = ({locale, inviteId}) => {
       )}
        
     </div>
-    <div className='md:w-1/2 mx-auto p-10 bg-rose-50 rounded-lg'>
+    <div className='md:w-1/2 mx-auto p-10 bg-amber-50 rounded-lg'>
       <Stream muted="true" loop="true" preload="true" controls="false" autoplay="true" loading="lazy" src="6c68ab7a5c914000416a6e47ded7ac01" />
     </div>
     </div>

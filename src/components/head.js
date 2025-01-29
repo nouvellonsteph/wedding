@@ -17,10 +17,12 @@ const Hero = ({ locale }) => {
         </h2>
         <p className="text-black font-italic font-poppins text-large">{translations.head.date}</p>
         <img src='/images/separator.png' className='opacity-70 bg-position-center mx-auto m-4'></img>
+        <a href="#form" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-amber-500 rounded-lg hover:bg-amber-600 focus:ring-4 focus:outline-none focus:ring-rose-300">{translations.form.submit}</a>
       </div>
       <div className='invisible flex-shrink'>
         <img src='/images/shape-2.png' className='md:visible w-div opacity-60'></img>
       </div>
+      
     </div>
   );
 };
