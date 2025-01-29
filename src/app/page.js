@@ -2,6 +2,7 @@
 import Head from "@/components/head";
 import Form from "@/components/form"
 import Foot from "@/components/foot"
+import Menu from "@/components/menu";
 import { useSearchParams } from 'next/navigation'
 import Countdown from "@/components/countdown";
 import Venue from "@/components/venue";
@@ -37,8 +38,12 @@ export default function Home() {
         <Venue locale={locale}/>
       </div>
       <img src="/images/wavesOpacityAmber.svg" className="bg-rose-50 w-screen"></img>
-      <div className="bg-rose-50">
-        <Form locale={locale} inviteId={inviteId}/>
+      <div className="bg-rose-50" >
+        <Menu locale={locale}/>
+      </div>
+      <img src="/images/wavesOpacityRose.svg" className="bg-amber-50 w-screen"></img>
+      <div className="bg-amber-50">
+        <Form id="form" locale={locale} inviteId={inviteId}/>
       </div>
     </main>
     </NextUIProvider>
