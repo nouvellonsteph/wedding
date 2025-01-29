@@ -242,7 +242,7 @@ const Form = ({locale, inviteId}) => {
         </form>
       )}
       {!rsvp && inviteValid && (
-        <form className="max-w-md mx-auto mt-8 p-6 bg-amber-50 rounded-2xl shadow-lg" onSubmit={handleSubmit}>
+        <form className="max-w-md mx-auto mt-8 p-6 bg-rose-50 rounded-2xl shadow-lg" onSubmit={handleSubmit}>
         <h2 className="text-2xl font-bold mb-6 text-center">RSVP Form</h2>
         <div className="mb-4 flex flex-col">
         <label className="block mb-1">
@@ -259,7 +259,7 @@ const Form = ({locale, inviteId}) => {
         </form>
       )}
       { !formSubmitted && rsvp && inviteValid && !inviteError && (
-        <form className="max-w-md mx-auto mt-8 p-6 bg-amber-50 rounded-2xl shadow-lg" onSubmit={handleSubmit}>
+        <form className="max-w-md mx-auto mt-8 p-6 bg-rose-50 rounded-2xl shadow-lg" onSubmit={handleSubmit}>
         <h2 className="text-2xl font-bold mb-6 text-center">RSVP Form</h2>
         <div className="mb-4 flex flex-col">
           <label className="block mb-1">{translations.form.firstName}*</label>
@@ -407,7 +407,7 @@ const Form = ({locale, inviteId}) => {
       </form>
       )}
       { formSubmitted && (
-        <div className="max-w-md break-all mx-auto mt-8 p-6 bg-amber-50 rounded-2xl shadow-lg">
+        <div className="max-w-md break-all mx-auto mt-8 p-6 bg-rose-50 rounded-2xl shadow-lg">
           <div className='font-bold'>
           {translations.form.submitted}
           </div>
@@ -458,7 +458,7 @@ const Form = ({locale, inviteId}) => {
       )}
        
     </div>
-    <div className='md:w-1/2 mx-auto p-10 bg-amber-50 rounded-lg'>
+    <div className='md:w-1/2 mx-auto p-10 bg-rose-50 rounded-lg'>
       <Stream muted="true" loop="true" preload="true" controls="false" autoplay="true" loading="lazy" src="6c68ab7a5c914000416a6e47ded7ac01" />
     </div>
     </div>
