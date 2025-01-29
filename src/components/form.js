@@ -458,7 +458,7 @@ const Form = ({locale, inviteId}) => {
       )}
        
     </div>
-    <div className='md:w-1/2 mx-auto p-10 bg-rose-50 rounded-lg'>
+    <div className='md:w-1/2 mx-auto p-10 bg-amber-50 rounded-lg'>
       <Stream muted="true" loop="true" preload="true" controls="false" autoplay="true" loading="lazy" src="6c68ab7a5c914000416a6e47ded7ac01" />
     </div>
     </div>
