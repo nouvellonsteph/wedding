@@ -187,7 +187,7 @@ const Form = ({locale, inviteId}) => {
   };
   
   return (
-    <div id="form" className='md:flex bg-rose-50 items-center justify-between'>
+    <div id="form" className='md:flex items-center justify-between'>
     <div className='md:w-1/2 mx-auto p-10 font-poppins'>
       <div className="max-w-md mx-auto">
         <h2 className="text-5xl font-niconne font-bold text-center">{translations.form.greeting}</h2>
