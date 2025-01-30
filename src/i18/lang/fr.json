@@ -41,6 +41,15 @@
       "submitted": "Merci beaucoup, votre réponse est prise en compte",
       "restart": "Recommencer"
     },
+    "menu": {
+      "abstract": "Programme de la journée",
+      "arrival": ["10H","Arrivée au manoir 🏰"],
+      "welcome": ["13H","Cocktail de bienvenue 🤗"],
+      "ceremony": ["16H","Cérémonie 💍"],
+      "cocktail": ["18H","Cocktail 🍸"],
+      "dinner": ["20H ","Diner 🍽️"],
+      "party": ["22H ","Fiesta 🎉"]
+    },
     "about": {
       "title": "À propos de nous",
       "description": "Nous sommes une entreprise passionnée par la création de sites Web attrayants et fonctionnels."

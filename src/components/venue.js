@@ -65,7 +65,7 @@ import { getTranslations } from '../i18/translations'
             
           </h2>
           <img src='/images/separator.png' className='opacity-70 inline m-4'></img>
-          <p className="m-4 mb-3justify-center text-center font-poppins">{translations.venue.description}</p>
+          <p className="m-4 mb-3 justify-center text-center font-poppins">{translations.venue.description}</p>
           
           
 <div className="opacity-80 max-w-sm p-6 mx-auto bg-rose-50 shadow-lg rounded-lg shadow">
