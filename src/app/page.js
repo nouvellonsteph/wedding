@@ -18,12 +18,23 @@ export default function Home() {
   return (
     <NextUIProvider>
       <main>  
-      <div className="flex flex-row-reverse bg-amber-50 font-raleway font-small">
-        <Link className="opacity-50 mx-3" href="?lang=fr">
+      <div className="flex flex-row-reverse fixed top-4 right-4 z-50 bg-white/70 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm">
+        <Link 
+          className={`mx-2 text-sm font-medium transition-all duration-200 hover:opacity-100 ${
+            locale === 'fr' ? 'opacity-100' : 'opacity-50'
+          }`} 
+          href="?lang=fr"
+        >
           FR
         </Link>
-        <Link className="opacity-50 mx-3" href="?lang=en">
-            EN
+        <div className="text-gray-300 mx-1">|</div>
+        <Link 
+          className={`mx-2 text-sm font-medium transition-all duration-200 hover:opacity-100 ${
+            locale === 'en' ? 'opacity-100' : 'opacity-50'
+          }`} 
+          href="?lang=en"
+        >
+          EN
         </Link>
       </div>
       <div className="bg-amber-50">

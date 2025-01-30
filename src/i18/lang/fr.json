@@ -41,15 +41,26 @@
       "submitted": "Merci beaucoup, votre réponse est prise en compte",
       "restart": "Recommencer"
     },
-    "menu": {
-      "abstract": "Programme de la journée",
-      "arrival": ["10H","Arrivée au manoir 🏰"],
-      "welcome": ["13H","Cocktail de bienvenue 🤗"],
-      "ceremony": ["16H","Cérémonie 💍"],
-      "cocktail": ["18H","Cocktail 🍸"],
-      "dinner": ["20H ","Diner 🍽️"],
-      "party": ["22H ","Fiesta 🎉"]
-    },
+"menu": {
+    "abstract": "Programme pour la journée",
+    "arrival":
+        ["10h", "Arrivée au Manoir 🏰", "Vous serez accueilli au Manoir et recevrez les clés de votre hébergement si vous séjournez avec nous. En outre, vous aurez accès à une sélection d'espaces de jeu doux et de rafraîchissements."],
+    "welcome": 
+        ["13h", "Cocktail d'accueil 🤗", "Les collations et les rafraîchissements seront disponibles pour vous aider à rester énergisé tout au long de la journée."]
+    ,
+    "ceremony": 
+        ["16h", "Cérémonie 💍", "Nous organisons une cérémonie civile avec nos témoins Sasha et Romain. La cérémonie sera conduite en français et en anglais. Des livrets contenant des traductions en français, russe et anglais seront également fournis."]
+    ,
+    "cocktail": 
+        ["18h", "Cocktail 🍸", "Il est temps de célébrer ! Dégustez une sélection de boissons et un buffet proposant une variété de plats froids. Pour capturer l'instant, nous aurons un photobooth disponible pour que vous puissiez prendre des photos mémorables avec des amis et de la famille."]
+    ,
+    "dinner": 
+        ["20h", "Dîner 🍽️", "Dîner assis et servit, complet d'un plat d'entrée, un plat principal, un dessert et des vins, spiritueux et boissons gazeuses."]
+    ,
+    "party": 
+        ["22h", "Fête 🎉", "Il est temps de danser ! Le service de nourriture et de boisson continuera jusqu'à 4 heures du matin. Pour ceux qui ne séjourne pas au manoir, un service de taxi sera fourni."]
+    
+},
     "about": {
       "title": "À propos de nous",
       "description": "Nous sommes une entreprise passionnée par la création de sites Web attrayants et fonctionnels."

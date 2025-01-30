@@ -31,25 +31,43 @@ const Menu = ({ locale }) => {
 							<td className="py-6 px-8 text-right w-1/3 text-rose-800 font-semibold">{translations.menu.arrival[0]}</td>
 							<td className="py-6 px-8 text-gray-700">{translations.menu.arrival[1]}</td>
 						</tr>
+						<tr>
+							<td colSpan="2" className="text-center py-3 text-sm text-gray-400">{translations.menu.arrival[2]}</td>
+						</tr>
 						<tr className="transition-colors">
 							<td className="py-6 px-8 text-right w-1/3 text-rose-800 font-semibold">{translations.menu.welcome[0]}</td>
 							<td className="py-6 px-8 text-gray-700">{translations.menu.welcome[1]}</td>
+						</tr>
+						<tr>
+							<td colSpan="2" className="text-center py-3 text-sm text-gray-400">{translations.menu.welcome[2]}</td>
 						</tr>
 						<tr className="transition-colors">
 							<td className="py-6 px-8 text-right w-1/3 text-rose-800 font-semibold">{translations.menu.ceremony[0]}</td>
 							<td className="py-6 px-8 text-gray-700">{translations.menu.ceremony[1]}</td>
 						</tr>
+						<tr>
+							<td colSpan="2" className="text-center py-3 text-sm text-gray-400">{translations.menu.ceremony[2]}</td>
+						</tr>
 						<tr className="transition-colors">
 							<td className="py-6 px-8 text-right w-1/3 text-rose-800 font-semibold">{translations.menu.cocktail[0]}</td>
 							<td className="py-6 px-8 text-gray-700">{translations.menu.cocktail[1]}</td>
+						</tr>
+						<tr>
+							<td colSpan="2" className="text-center py-3 text-sm text-gray-400">{translations.menu.cocktail[2]}</td>
 						</tr>
 						<tr className="transition-colors">
 							<td className="py-6 px-8 text-right w-1/3 text-rose-800 font-semibold">{translations.menu.dinner[0]}</td>
 							<td className="py-6 px-8 text-gray-700">{translations.menu.dinner[1]}</td>
 						</tr>
+						<tr>
+							<td colSpan="2" className="text-center py-3 text-sm text-gray-400">{translations.menu.dinner[2]}</td>
+						</tr>
 						<tr className="transition-colors">
 							<td className="py-6 px-8 text-right w-1/3 text-rose-800 font-semibold">{translations.menu.party[0]}</td>
 							<td className="py-6 px-8 text-gray-700">{translations.menu.party[1]}</td>
+						</tr>
+						<tr>
+							<td colSpan="2" className="text-center py-3 text-sm text-gray-400">{translations.menu.party[2]}</td>
 						</tr>
 					</tbody>
 				</table>
