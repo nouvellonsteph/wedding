@@ -14,6 +14,7 @@
       "seconds": "seconds"
     },
     "venue": {
+      "book": "Search an accomodation",
       "greeting": "You're invited to our wedding",
       "description": "Close to airports and in the middle of the countryside, this manor is a dreamy place to celebrate with you that so special day ❤️",
       "message": "It will take place on the 19th of July 2025 at the Manor of Villerfermoy from 4PM for the non religious ceremony",
@@ -45,7 +46,7 @@
       "abstract": "Program for the day",
       "arrival": ["10AM","Arrival to the Manor 🏰", "You will be welcomed at the Manor and will receive the keys to your accommodation if you are staying with us. Additionally, you will have access to a selection of soft play areas and refreshments."],
       "welcome": ["1PM","Welcome Cocktail 🤗", "Finger foods and refreshments will be available to help keep you energized throughout the day."],
-      "ceremony": ["4PM","Ceremony 💍", "We are having a civil ceremony with our witnesses Sasha and Romain. The ceremony will be conducted in both French and English. Booklets with translations into French, Russian, and English will also be provided."],
+      "ceremony": ["4PM","Ceremony 💍", "We are having a civil ceremony with our witnesses Sasha, Clara and Romain. The ceremony will be conducted in both French and English. Booklets with translations into French, Russian, and English will also be provided."],
       "cocktail": ["6PM","Cocktail 🍸", "It's time for celebration! Enjoy a selection of drinks and a buffet featuring a variety of cold foods. To capture the moment, we'll have a photobooth available for you to take memorable photos with friends and family."],
       "dinner": ["8PM","Dinner 🍽️", "Sitted and plated dinner, complete with a starter, main course, dessert, and paired wine, spirits, and soft drinks."],
       "party": ["10PM","Party 🎉", "It's time to celebrate on the dance floor. The food and drink service will continue until 4 AM. For those who are not staying at the manor, taxi service will be provided."]

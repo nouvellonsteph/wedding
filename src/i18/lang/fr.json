@@ -14,6 +14,7 @@
       "seconds": "secondes"
     },
     "venue": {
+      "book": "Chercher un hébergement",
       "greeting": "Vous êtes invité à notre Mariage !",
       "description": "Proche des aéroports et au milieu des champs, ce manoir est l'endroit de rêve pour célébrer avec vous notre amour ❤️",
       "message": "Il aura lieu le 19 Juillet 2025 au Manoir de Villefermoy à partir de 16h pour la cérémonie laïque.",
@@ -49,7 +50,7 @@
         ["13h", "Cocktail d'accueil 🤗", "Les collations et les rafraîchissements seront disponibles pour vous aider à rester énergisé tout au long de la journée."]
     ,
     "ceremony": 
-        ["16h", "Cérémonie 💍", "Nous organisons une cérémonie civile avec nos témoins Sasha et Romain. La cérémonie sera conduite en français et en anglais. Des livrets contenant des traductions en français, russe et anglais seront également fournis."]
+        ["16h", "Cérémonie 💍", "Nous organisons une cérémonie civile avec nos témoins Sasha, Clara et Romain. La cérémonie sera conduite en français et en anglais. Des livrets contenant des traductions en français, russe et anglais seront également fournis."]
     ,
     "cocktail": 
         ["18h", "Cocktail 🍸", "Il est temps de célébrer ! Dégustez une sélection de boissons et un buffet proposant une variété de plats froids. Pour capturer l'instant, nous aurons un photobooth disponible pour que vous puissiez prendre des photos mémorables avec des amis et de la famille."]
