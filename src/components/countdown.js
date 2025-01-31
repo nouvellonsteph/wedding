@@ -16,10 +16,11 @@ const getTimeLeft = () => {
 };
 
 const Countdown = ({ locale }) => {
-	const [timeLeft, setTimeLeft] = useState(() => getTimeLeft());
+	const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 	const translations = getTranslations(locale);
 
 	useEffect(() => {
+		setTimeLeft(getTimeLeft());
 		const timer = setInterval(() => {
 			setTimeLeft(getTimeLeft());
 		}, 1000);

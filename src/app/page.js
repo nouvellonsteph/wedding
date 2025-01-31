@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import Head from "@/components/head";
 import Form from "@/components/form"
 import Foot from "@/components/foot"
@@ -12,14 +13,51 @@ import {Divider, Link} from "@nextui-org/react";
 import '../style/divider.css'
 
 export default function Home() {
-  const [locale, setLocale] = useState(() => {
-    return 'en';
-  });
+  const [locale, setLocale] = useState('en');
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    // Save the current language state to localStorage
-    localStorage.setItem('wedding-locale', locale);
-  }, [locale]);
+    setIsClient(true);
+    
+    try {
+      // Try to get the locale from localStorage first
+      const savedLocale = localStorage.getItem('wedding-locale');
+      if (savedLocale && ['en', 'fr'].includes(savedLocale)) {
+        setLocale(savedLocale);
+        return;
+      }
+
+      // If no saved locale, try to detect from browser
+      if (typeof window !== 'undefined' && window.navigator) {
+        const acceptLanguage = navigator.languages
+          ? navigator.languages.join(',')
+          : navigator.language;
+
+        const preferredLanguage = acceptLanguage
+          .split(',')
+          .map(lang => lang.split(';')[0].split('-')[0].toLowerCase())
+          .find(lang => ['en', 'fr'].includes(lang));
+
+        if (preferredLanguage) {
+          setLocale(preferredLanguage);
+          localStorage.setItem('wedding-locale', preferredLanguage);
+        }
+      }
+    } catch (error) {
+      console.error('Error accessing localStorage:', error);
+    }
+  }, []); // Run once on mount
+
+  // Update localStorage whenever locale changes
+  useEffect(() => {
+    if (isClient) {
+      try {
+        localStorage.setItem('wedding-locale', locale);
+      } catch (error) {
+        console.error('Error saving to localStorage:', error);
+      }
+    }
+  }, [locale, isClient]);
 
   // For backwards compatibility, you might want to keep this:
   const inviteId = useSearchParams().get('inviteId');
@@ -32,7 +70,14 @@ export default function Home() {
           className={`mx-2 text-sm font-medium transition-all duration-200 hover:opacity-100 cursor-pointer ${
             locale === 'fr' ? 'opacity-100' : 'opacity-50'
           }`} 
-          onClick={() => setLocale('fr')}
+          onClick={() => {
+            setLocale('fr');
+            try {
+              localStorage.setItem('wedding-locale', 'fr');
+            } catch (error) {
+              console.error('Error saving locale:', error);
+            }
+          }}
         >
           FR
         </Link>
@@ -41,7 +86,14 @@ export default function Home() {
           className={`mx-2 text-sm font-medium transition-all duration-200 hover:opacity-100 cursor-pointer ${
             locale === 'en' ? 'opacity-100' : 'opacity-50'
           }`} 
-          onClick={() => setLocale('en')}
+          onClick={() => {
+            setLocale('en');
+            try {
+              localStorage.setItem('wedding-locale', 'en');
+            } catch (error) {
+              console.error('Error saving locale:', error);
+            }
+          }}
         >
           EN
         </Link>
@@ -49,19 +101,44 @@ export default function Home() {
       <div className="bg-amber-50">
         <Head locale={locale}/>
       </div>
-      <img src="/images/wavesOpacityAmber.svg" className="bg-rose-50 w-screen"></img>
+      <Image
+        src="/images/wavesOpacityAmber.svg"
+        alt="Wave divider"
+        width={1920}
+        height={100}
+        priority={true}
+        className="bg-rose-50 w-screen"
+      />
       <div className="bg-rose-50" >
         <Countdown locale={locale}/>
       </div>
-      <img src="/images/wavesOpacityRose.svg" className="bg-amber-50 w-screen"></img>
+      <Image
+        src="/images/wavesOpacityRose.svg"
+        alt="Wave divider"
+        width={1920}
+        height={100}
+        className="bg-amber-50 w-screen"
+      />
       <div className="bg-amber-50">
         <Venue locale={locale}/>
       </div>
-      <img src="/images/wavesOpacityAmber.svg" className="bg-rose-50 w-screen"></img>
+      <Image
+        src="/images/wavesOpacityAmber.svg"
+        alt="Wave divider"
+        width={1920}
+        height={100}
+        className="bg-rose-50 w-screen"
+      />
       <div className="bg-rose-50" >
         <Menu locale={locale}/>
       </div>
-      <img src="/images/wavesOpacityRose.svg" className="bg-amber-50 w-screen"></img>
+      <Image
+        src="/images/wavesOpacityRose.svg"
+        alt="Wave divider"
+        width={1920}
+        height={100}
+        className="bg-amber-50 w-screen"
+      />
       <div className="bg-amber-50">
         <Form id="form" locale={locale} inviteId={inviteId}/>
       </div>
