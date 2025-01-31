@@ -1,5 +1,3 @@
-const { Niconne } = require('next/font/google');
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -9,10 +7,10 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      sans: ['sans-serif'],
-      niconne: ['niconne', 'sans-serif'],
-      poppins: ['poppins', 'sans-serif'],
-      raleway: ['raleway', 'sans-serif']
+      sans: ['var(--font-poppins)'],
+      niconne: ['var(--font-niconne)'],
+      poppins: ['var(--font-poppins)'],
+      raleway: ['var(--font-raleway)']
     },
     extend: {
       backgroundImage: {
