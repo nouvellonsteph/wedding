@@ -1,11 +1,10 @@
 'use client'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import Image from 'next/image';
 import Head from "@/components/head";
-import Form from "@/components/form"
+import FormWrapper from "@/components/formWrapper"
 import Foot from "@/components/foot"
 import Menu from "@/components/menu";
-import { useSearchParams } from 'next/navigation'
 import Countdown from "@/components/countdown";
 import Venue from "@/components/venue";
 import {NextUIProvider} from "@nextui-org/system";
@@ -58,9 +57,6 @@ export default function Home() {
       }
     }
   }, [locale, isClient]);
-
-  // For backwards compatibility, you might want to keep this:
-  const inviteId = useSearchParams().get('inviteId');
 
   return (
     <NextUIProvider>
@@ -140,7 +136,9 @@ export default function Home() {
         className="bg-amber-50 w-screen"
       />
       <div className="bg-amber-50">
-        <Form id="form" locale={locale} inviteId={inviteId}/>
+        <Suspense fallback={<div>Loading...</div>}>
+          <FormWrapper locale={locale} />
+        </Suspense>
       </div>
     </main>
     </NextUIProvider>
