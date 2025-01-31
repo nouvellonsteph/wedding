@@ -5,7 +5,10 @@
     width: 100%;
     overflow: hidden;
     line-height: 0;
-    transform: rotate(180deg);
+    transform: rotate(180deg) translateZ(0);
+    will-change: transform;
+    -webkit-transform: rotate(180deg) translateZ(0);
+    backface-visibility: hidden;
 }
 
 .custom-shape-divider-bottom-1713682567 svg {
@@ -26,7 +29,10 @@
     width: 100%;
     overflow: hidden;
     line-height: 0;
-    transform: rotate(180deg);
+    transform: rotate(180deg) translateZ(0);
+    will-change: transform;
+    -webkit-transform: rotate(180deg) translateZ(0);
+    backface-visibility: hidden;
 }
 
 .custom-shape-divider-bottom-1713684960 svg {
@@ -34,7 +40,10 @@
     display: block;
     width: calc(100% + 1.3px);
     height: 46px;
-    transform: rotateY(180deg);
+    transform: rotateY(180deg) translateZ(0);
+    will-change: transform;
+    -webkit-transform: rotateY(180deg) translateZ(0);
+    backface-visibility: hidden;
 }
 
 .custom-shape-divider-bottom-1713684960 .shape-fill {
