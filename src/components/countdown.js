@@ -1,5 +1,6 @@
 'use client'
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import '../style/countdown.css'
 import { getTranslations } from '../i18/translations'
 
@@ -33,7 +34,14 @@ const Countdown = ({ locale }) => {
 	return (
 		<div className='countdown'>
 			<h2 className="text-center font-niconne font-bold">{translations.countdown.greeting}</h2>
-			<img src='/images/separator.png' className='opacity-70 bg-position-center mx-auto m-4'></img>
+			<Image
+				src='/images/separator.png'
+				width={150}
+				height={30}
+				alt="Decorative separator"
+				className='opacity-70 bg-position-center mx-auto m-4'
+				priority
+			/>
 			<div className='p-4 content font-poppins text-2xl'>
 				{Object.entries(timeLeft).map((el) => {
 					let i = 1;

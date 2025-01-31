@@ -1,5 +1,6 @@
 'use client'
 import React, { useState, useEffect } from "react";
+import Image from 'next/image';
 import '../style/countdown.css'
 import { getTranslations } from '../i18/translations'
 
@@ -23,7 +24,13 @@ const Menu = ({ locale }) => {
 	return (
 		<div className='countdown'>
 			<h2 className="text-center px-4 font-niconne font-bold">{translations.menu.abstract}</h2>
-			<img src='/images/separator.png' className='opacity-70 bg-position-center mx-auto m-4'></img>
+			<Image 
+				src='/images/separator.png'
+				width={200}
+				height={30}
+				alt="Decorative separator"
+				className='opacity-70 bg-position-center mx-auto m-4'
+			/>
 			<div className='p-4 content font-poppins'>
 				<table className="table-auto text-md text-left w-full max-w-2xl mx-auto border-collapse">
 					<tbody>

@@ -3,6 +3,7 @@ import { Stream } from "@cloudflare/stream-react";
 import { getTranslations } from '../i18/translations'
 import Turnstile, { useTurnstile } from "react-turnstile";
 import React from 'react';
+import Image from "next/image";
 import axios from 'axios';
 import { v4 as uuid } from 'uuid'
 import { Button, CardHeader, Grid, Divider, CardBody, CardFooter, Link, Card, Col, Input, RadioGroup, Radio, Select, NextUIProvider } from '@nextui-org/react';
@@ -191,7 +192,14 @@ const Form = ({locale, inviteId}) => {
     <div className='md:w-1/2 mx-auto p-10 font-poppins'>
       <div className="max-w-md mx-auto">
         <h2 className="text-5xl font-niconne font-bold text-center">{translations.form.greeting}</h2>
-        <img src='/images/separator.png' className='opacity-70 bg-position-center mx-auto m-4'></img>
+        <Image
+          src='/images/separator.png'
+          width={150}
+          height={30}
+          alt="Decorative separator"
+          className='opacity-70 bg-position-center mx-auto m-4'
+          priority
+        />
         <p className="m-4 mb-3 justify-center text-center font-poppins">{translations.form.message}</p>
       </div>
       { !inviteValid && (

@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from "next/image";
 
 import { getTranslations } from '../i18/translations'
 
@@ -14,46 +15,143 @@ import { getTranslations } from '../i18/translations'
 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
     <div className="grid gap-4">
         <div>
-            <img className="h-auto max-w-full rounded-lg" src="/images/gallery/photo.jpg" alt=""></img>
+            <div className="relative aspect-square">
+              <Image
+                className="rounded-lg object-cover"
+                src="/images/gallery/photo.jpg"
+                alt="Gallery photo"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              />
+            </div>
         </div>
         <div>
-            <img className="h-auto max-w-full rounded-lg" src="/images/gallery/photo1.jpg" alt=""></img>
+            <div className="relative aspect-square">
+              <Image
+                className="rounded-lg object-cover"
+                src="/images/gallery/photo1.jpg"
+                alt="Gallery photo"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              />
+            </div>
         </div>
         <div>
-            <img className="h-auto max-w-full rounded-lg" src="/images/gallery/photo2.jpg" alt=""></img>
+            <div className="relative aspect-square">
+              <Image
+                className="rounded-lg object-cover"
+                src="/images/gallery/photo2.jpg"
+                alt="Gallery photo"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              />
+            </div>
         </div>
     </div>
     <div className="grid gap-4">
         <div>
-            <img className="h-auto max-w-full rounded-lg" src="/images/gallery/photo10.jpg" alt=""></img>
+            <div className="relative aspect-square">
+              <Image
+                className="rounded-lg object-cover"
+                src="/images/gallery/photo10.jpg"
+                alt="Gallery photo"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              />
+            </div>
         </div>
         <div>
-            <img className="h-auto max-w-full rounded-lg" src="/images/gallery/photo4.jpg" alt=""></img>
+            <div className="relative aspect-square">
+              <Image
+                className="rounded-lg object-cover"
+                src="/images/gallery/photo4.jpg"
+                alt="Gallery photo"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              />
+            </div>
         </div>
         <div>
-            <img className="h-auto max-w-full rounded-lg" src="/images/gallery/photo5.jpg" alt=""></img>
+            <div className="relative aspect-square">
+              <Image
+                className="rounded-lg object-cover"
+                src="/images/gallery/photo5.jpg"
+                alt="Gallery photo"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              />
+            </div>
         </div>
     </div>
     <div className="grid gap-4">
         <div>
-            <img className="h-auto max-w-full rounded-lg" src="/images/gallery/photo6.jpg" alt=""></img>
+            <div className="relative aspect-square">
+              <Image
+                className="rounded-lg object-cover"
+                src="/images/gallery/photo6.jpg"
+                alt="Gallery photo"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              />
+            </div>
         </div>
         <div>
-            <img className="h-auto max-w-full rounded-lg" src="/images/gallery/animation.gif" alt=""></img>
+            <div className="relative aspect-square">
+              <Image
+                className="rounded-lg object-cover"
+                src="/images/gallery/animation.gif"
+                alt="Gallery animation"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                unoptimized
+              />
+            </div>
         </div>
         <div>
-            <img className="h-auto max-w-full rounded-lg" src="/images/gallery/photo3.jpg" alt=""></img>
+            <div className="relative aspect-square">
+              <Image
+                className="rounded-lg object-cover"
+                src="/images/gallery/photo3.jpg"
+                alt="Gallery photo"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              />
+            </div>
         </div>
     </div>
     <div className="grid gap-4">
         <div>
-            <img className="h-auto max-w-full rounded-lg" src="/images/gallery/photo8.jpg" alt=""></img>
+            <div className="relative aspect-square">
+              <Image
+                className="rounded-lg object-cover"
+                src="/images/gallery/photo8.jpg"
+                alt="Gallery photo"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              />
+            </div>
         </div>
         <div>
-            <img className="h-auto max-w-full rounded-lg" src="/images/gallery/photo7.jpg" alt=""></img>
+            <div className="relative aspect-square">
+              <Image
+                className="rounded-lg object-cover"
+                src="/images/gallery/photo7.jpg"
+                alt="Gallery photo"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              />
+            </div>
         </div>
         <div>
-            <img className="h-auto max-w-full rounded-lg" src="/images/gallery/photo9.jpg" alt=""></img>
+            <div className="relative aspect-square">
+              <Image
+                className="rounded-lg object-cover"
+                src="/images/gallery/photo9.jpg"
+                alt="Gallery photo"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              />
+            </div>
         </div>
     </div>
 </div>
@@ -65,13 +163,27 @@ import { getTranslations } from '../i18/translations'
             {translations.venue.greeting}
             
           </h2>
-          <img src='/images/separator.png' className='opacity-70 inline m-4'></img>
+          <Image
+            src='/images/separator.png'
+            width={150}
+            height={30}
+            alt="Decorative separator"
+            className='opacity-70 inline m-4'
+            priority
+          />
           <p className="m-4 mb-3 justify-center text-center font-poppins">{translations.venue.description}</p>
           
           
 <div className="opacity-80 max-w-sm p-6 mx-auto bg-rose-50 shadow-lg rounded-lg shadow">
     <a>
-        <img className="rounded-t-lg" src="/images/villefermoy.png" alt="" />
+        <Image
+          src="/images/villefermoy.png"
+          width={400}
+          height={300}
+          alt="Villefermoy venue"
+          className="rounded-t-lg"
+          priority
+        />
     </a>
     <div className="p-5">
         <a>
