@@ -2,8 +2,9 @@
 import { useState, useEffect, Suspense } from 'react';
 import Image from 'next/image';
 import Head from "@/components/head";
-import FormWrapper from "@/components/formWrapper"
-import Foot from "@/components/foot"
+import FormWrapper from "@/components/formWrapper";
+import Foot from "@/components/foot";
+
 import Menu from "@/components/menu";
 import Countdown from "@/components/countdown";
 import Venue from "@/components/venue";
@@ -59,9 +60,8 @@ export default function Home() {
   }, [locale, isClient]);
 
   return (
-    <NextUIProvider>
-      <main>  
-      <div className="flex flex-row-reverse fixed top-4 right-4 z-50 bg-white/70 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm">
+   <>
+      <div id="lang" className="flex flex-row-reverse fixed top-4 right-4 z-50 bg-white/70 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm">
         <Link 
           className={`mx-2 text-sm font-medium transition-all duration-200 hover:opacity-100 cursor-pointer ${
             locale === 'fr' ? 'opacity-100' : 'opacity-50'
@@ -69,6 +69,7 @@ export default function Home() {
           onClick={() => {
             setLocale('fr');
             try {
+              console.log('setting locale to fr');
               localStorage.setItem('wedding-locale', 'fr');
             } catch (error) {
               console.error('Error saving locale:', error);
@@ -85,6 +86,7 @@ export default function Home() {
           onClick={() => {
             setLocale('en');
             try {
+              console.log('setting locale to en');
               localStorage.setItem('wedding-locale', 'en');
             } catch (error) {
               console.error('Error saving locale:', error);
@@ -94,6 +96,8 @@ export default function Home() {
           EN
         </Link>
       </div>
+    <NextUIProvider>
+      <main> 
       <div className="bg-amber-50">
         <Head locale={locale}/>
       </div>
@@ -140,7 +144,19 @@ export default function Home() {
           <FormWrapper locale={locale} />
         </Suspense>
       </div>
+      <Image
+        src="/images/wavesOpacityAmber.svg"
+        alt="Wave divider"
+        width={1920}
+        height={100}
+        className="bg-rose-50 w-screen"
+      />
+      <div className="bg-rose-50" >
+        <Foot />
+      </div>
     </main>
     </NextUIProvider>
+    
+    </>
   );
 }
