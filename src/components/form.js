@@ -18,7 +18,7 @@ const Form = ({locale, inviteId}) => {
     firstName: '',
     lastName: '',
     inviteId: '',
-    rsvp: false,
+    rsvp: null,
     email: '',
     brunch: false,
     children: 0,
@@ -45,13 +45,12 @@ const Form = ({locale, inviteId}) => {
      
   };
 
-  const handleRsvp = (e) => {
-    const { name, value, type, checked } = e.target;
+  const handleRsvp = (value) => {
     setFormData(prevData => ({
       ...prevData,
-      [name]: type === 'checkbox' ? checked : value
+      rsvp: value === 'yes'
     }));
-     setRsvp(true)
+    setRsvp(true);
   };
   
   const handleChallenge = (token) => {
@@ -253,16 +252,29 @@ const Form = ({locale, inviteId}) => {
         <form className="max-w-md mx-auto mt-8 p-6 bg-rose-50 rounded-2xl shadow-lg" onSubmit={handleSubmit}>
         <h2 className="text-2xl font-bold mb-6 text-center">RSVP Form</h2>
         <div className="mb-4 flex flex-col">
-        <label className="block mb-1">
-          {translations.form.rsvp}
-            <input
-              type="checkbox"
-              name="rsvp"
-              checked={formData.rsvp}
-              onChange={handleRsvp}
-              className="ml-2 form-checkbox"
-            />
-          </label>
+          <label className="block mb-2">{translations.form.rsvp}</label>
+          <div className="flex gap-4">
+            <label className="inline-flex items-center">
+              <input
+                type="radio"
+                name="rsvp"
+                value="yes"
+                onChange={(e) => handleRsvp(e.target.value)}
+                className="form-radio h-4 w-4 text-amber-500"
+              />
+              <span className="ml-2">{locale === 'en' ? 'Yes' : 'Oui'}</span>
+            </label>
+            <label className="inline-flex items-center">
+              <input
+                type="radio"
+                name="rsvp"
+                value="no"
+                onChange={(e) => handleRsvp(e.target.value)}
+                className="form-radio h-4 w-4 text-amber-500"
+              />
+              <span className="ml-2">{locale === 'en' ? 'No' : 'Non'}</span>
+            </label>
+          </div>
         </div>
         </form>
       )}
