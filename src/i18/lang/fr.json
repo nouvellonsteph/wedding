@@ -6,6 +6,12 @@
       "date": "Le 9 Aout 2025 à 13h",
       "venue": "Manoir de Villefermoy, Route de Fontainebleau, 77820 Les Écrennes, France"
     },
+    "footer": {
+      "thankYou": "Merci de faire partie de notre journée spéciale. Nous avons hâte de célébrer avec vous !",
+      "emailUs": "Nous contacter",
+      "viewVenue": "Voir le lieu sur la carte",
+      "rsvpLink": "Confirmer ma présence"
+    },
     "countdown": {
       "greeting": "Notre mariage approche et vous y êtes invité !",
       "days": "jours",

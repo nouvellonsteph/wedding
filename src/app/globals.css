@@ -28,6 +28,17 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
+/* Ensure language switcher stays visible */
+#lang {
+  position: fixed !important;
+  z-index: 9999 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: none !important;
+  transition: background-color 0.3s, box-shadow 0.3s !important;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;

@@ -61,10 +61,10 @@ export default function Home() {
 
   return (
    <>
-      <div id="lang" className="flex flex-row-reverse fixed top-4 right-4 z-50 bg-white/70 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm">
+      <div id="lang" className="flex flex-row-reverse fixed top-4 right-4 sm:top-6 sm:right-6 z-[9999] bg-white/90 backdrop-blur-lg rounded-full px-4 py-2.5 sm:px-6 sm:py-3 shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-amber-200 animate-fadeIn hover:bg-white/100">
         <Link 
-          className={`mx-2 text-sm font-medium transition-all duration-200 hover:opacity-100 cursor-pointer ${
-            locale === 'fr' ? 'opacity-100' : 'opacity-50'
+          className={`mx-2 sm:mx-3 text-base sm:text-lg font-medium transition-all duration-200 hover:opacity-100 cursor-pointer ${
+            locale === 'fr' ? 'opacity-100 font-bold text-amber-700' : 'opacity-60 hover:text-amber-700'
           }`} 
           onClick={() => {
             setLocale('fr');
@@ -78,10 +78,10 @@ export default function Home() {
         >
           FR
         </Link>
-        <div className="text-gray-300 mx-1">|</div>
+        <div className="text-gray-300 mx-1 sm:mx-2 text-base sm:text-lg">|</div>
         <Link 
-          className={`mx-2 text-sm font-medium transition-all duration-200 hover:opacity-100 cursor-pointer ${
-            locale === 'en' ? 'opacity-100' : 'opacity-50'
+          className={`mx-2 sm:mx-3 text-base sm:text-lg font-medium transition-all duration-200 hover:opacity-100 cursor-pointer ${
+            locale === 'en' ? 'opacity-100 font-bold text-amber-700' : 'opacity-60 hover:text-amber-700'
           }`} 
           onClick={() => {
             setLocale('en');
@@ -152,7 +152,7 @@ export default function Home() {
         className="bg-rose-50 w-screen"
       />
       <div className="bg-rose-50" >
-        <Foot />
+        <Foot locale={locale} />
       </div>
     </main>
     </NextUIProvider>
