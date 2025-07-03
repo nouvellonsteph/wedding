@@ -21,7 +21,6 @@ const Menu = ({ locale }) => {
 				<div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="border-l-4 border-amber-300 rounded-lg overflow-hidden shadow-lg bg-white">
 						{[
-							'arrival',
 							'welcome',
 							'ceremony',
 							'cocktail',
