@@ -6,6 +6,12 @@
       "date": "9th of August 2025, 1PM",
       "venue": "Manoir de Villefermoy, Route de Fontainebleau, 77820 Les Écrennes, France"
     },
+    "footer": {
+      "thankYou": "Thank you for being part of our special day. We look forward to celebrating with you!",
+      "emailUs": "Email us",
+      "viewVenue": "View venue on map",
+      "rsvpLink": "RSVP"
+    },
     "countdown": {
       "greeting": "Our wedding day is coming and you're invited!",
       "days": "days",

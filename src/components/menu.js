@@ -1,83 +1,48 @@
 'use client'
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Image from 'next/image';
-import '../style/countdown.css'
 import { getTranslations } from '../i18/translations'
 
-const COUNTDOWN_TARGET = new Date("2025-08-09T14:00:00");
-
-
-const getTimeLeft = () => {
-	const totalTimeLeft = COUNTDOWN_TARGET - new Date();
-	const days = Math.floor(totalTimeLeft / (1000 * 60 * 60 * 24));
-	const hours = Math.floor((totalTimeLeft / (1000 * 60 * 60)) % 24);
-	const minutes = Math.floor((totalTimeLeft / (1000 * 60)) % 60);
-	const seconds = Math.floor((totalTimeLeft / 1000) % 60);
-	return { days, hours, minutes, seconds };
-};
-
 const Menu = ({ locale }) => {
-	const [timeLeft, setTimeLeft] = useState(() => getTimeLeft());
 	const translations = getTranslations(locale);
 
-
 	return (
-		<div className='countdown'>
-			<h2 className="text-center px-4 font-niconne font-bold">{translations.menu.abstract}</h2>
+		<div className='py-16'>
+			<h2 className="text-center px-4 font-niconne font-bold text-5xl md:text-6xl mb-4">{translations.menu.abstract}</h2>
 			<Image 
 				src='/images/separator.png'
 				width={200}
 				height={30}
 				alt="Decorative separator"
-				className='opacity-70 bg-position-center mx-auto m-4'
+				className='opacity-80 hover:opacity-100 transition-all duration-300 mx-auto mb-12'
+				priority
 			/>
-			<div className='p-4 content font-poppins'>
-				<table className="table-auto text-md text-left w-full max-w-2xl mx-auto border-collapse">
-					<tbody>
-						<tr className="transition-colors">
-							<td className="py-6 px-8 text-right w-1/3 text-rose-800 font-semibold">{translations.menu.arrival[0]}</td>
-							<td className="py-6 px-8 text-gray-700">{translations.menu.arrival[1]}</td>
-						</tr>
-						<tr>
-							<td colSpan="2" className="text-center py-3 text-sm text-gray-400">{translations.menu.arrival[2]}</td>
-						</tr>
-						<tr className="transition-colors">
-							<td className="py-6 px-8 text-right w-1/3 text-rose-800 font-semibold">{translations.menu.welcome[0]}</td>
-							<td className="py-6 px-8 text-gray-700">{translations.menu.welcome[1]}</td>
-						</tr>
-						<tr>
-							<td colSpan="2" className="text-center py-3 text-sm text-gray-400">{translations.menu.welcome[2]}</td>
-						</tr>
-						<tr className="transition-colors">
-							<td className="py-6 px-8 text-right w-1/3 text-rose-800 font-semibold">{translations.menu.ceremony[0]}</td>
-							<td className="py-6 px-8 text-gray-700">{translations.menu.ceremony[1]}</td>
-						</tr>
-						<tr>
-							<td colSpan="2" className="text-center py-3 text-sm text-gray-400">{translations.menu.ceremony[2]}</td>
-						</tr>
-						<tr className="transition-colors">
-							<td className="py-6 px-8 text-right w-1/3 text-rose-800 font-semibold">{translations.menu.cocktail[0]}</td>
-							<td className="py-6 px-8 text-gray-700">{translations.menu.cocktail[1]}</td>
-						</tr>
-						<tr>
-							<td colSpan="2" className="text-center py-3 text-sm text-gray-400">{translations.menu.cocktail[2]}</td>
-						</tr>
-						<tr className="transition-colors">
-							<td className="py-6 px-8 text-right w-1/3 text-rose-800 font-semibold">{translations.menu.dinner[0]}</td>
-							<td className="py-6 px-8 text-gray-700">{translations.menu.dinner[1]}</td>
-						</tr>
-						<tr>
-							<td colSpan="2" className="text-center py-3 text-sm text-gray-400">{translations.menu.dinner[2]}</td>
-						</tr>
-						<tr className="transition-colors">
-							<td className="py-6 px-8 text-right w-1/3 text-rose-800 font-semibold">{translations.menu.party[0]}</td>
-							<td className="py-6 px-8 text-gray-700">{translations.menu.party[1]}</td>
-						</tr>
-						<tr>
-							<td colSpan="2" className="text-center py-3 text-sm text-gray-400">{translations.menu.party[2]}</td>
-						</tr>
-					</tbody>
-				</table>
+			<div className='p-4 font-poppins'>
+				<div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+					<div className="border-l-4 border-amber-300 rounded-lg overflow-hidden shadow-lg bg-white">
+						{[
+							'welcome',
+							'ceremony',
+							'cocktail',
+							'dinner',
+							'party'
+						].map((event, idx) => (
+							<div key={event} className={`transition-all duration-300 hover:bg-amber-50 ${idx % 2 === 0 ? 'bg-white' : 'bg-rose-50'}`}>
+								<div className="flex flex-col md:flex-row border-b border-gray-200">
+									<div className="md:w-1/3 p-6 flex items-center justify-center md:justify-end">
+										<div className="text-right">
+											<h3 className="text-xl font-semibold text-rose-800">{translations.menu[event][0]}</h3>
+										</div>
+									</div>
+									<div className="md:w-2/3 p-6">
+										<p className="text-gray-700 text-lg">{translations.menu[event][1]}</p>
+										<p className="text-sm text-gray-500 mt-3 italic">{translations.menu[event][2]}</p>
+									</div>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
 			</div>
 		</div>
 	);
