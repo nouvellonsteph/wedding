@@ -54,6 +54,7 @@ export async function onRequest(context) {
                  firstName = '${body.firstName}',
                  lastName = '${body.lastName}',
                  email = '${body.email}',
+                 phone = '${body.phone || ''}',
                  lastUpdated = '${Date.now()}', 
                  children = '${body.children}', 
                  rsvp = '${body.rsvp}',
@@ -62,12 +63,13 @@ export async function onRequest(context) {
                  accompanyFirstName = '${body.accompanyFirstName}', 
                  accompanyLastName = '${body.accompanyLastName}' 
              WHERE guestId = '${body.inviteId}';`
-            let update = `INSERT INTO updates (uuid, createdAt, firstName, lastName, email, rsvp, brunch, children, foodRestriction, accompany, accompanyFirstName, accompanyLastName, guestId)
+            let update = `INSERT INTO updates (uuid, createdAt, firstName, lastName, email, phone, rsvp, brunch, children, foodRestriction, accompany, accompanyFirstName, accompanyLastName, guestId)
              VALUES ('${uuid()}',
                  '${Date.now()}',
                  '${body.firstName}',
                  '${body.lastName}',
                  '${body.email}',
+                 '${body.phone || ''}',
                  '${body.rsvp}',
                  '${body.brunch}', 
                  '${body.children}', 
