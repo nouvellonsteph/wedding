@@ -33,6 +33,7 @@
       "inviteId": "Votre numéro d'invitation",
       "message": "N'oubliez pas de nous dire si vous pourrez vous joindre à nous en remplissant le formulaire ci-dessous",
       "email": "Adresse Email",
+      "phone": "Numéro de téléphone portable",
       "firstName": "Prénom",
       "lastName": "Nom",
       "rsvp": "Serez-vous présent à notre mariage ?",

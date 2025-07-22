@@ -18,9 +18,11 @@ const Form = ({locale, inviteId}) => {
     inviteId: '',
     rsvp: null,
     email: '',
+    phone: '',
     brunch: false,
     children: 0,
     foodRestriction: 'None',
+    foodRestrictionOther: '',
     accompany: false,
     accompanyFirstName: '',
     accompanyLastName: '',
@@ -74,14 +76,20 @@ const Form = ({locale, inviteId}) => {
       if (response && response.status === 200) {
         setInviteError(false);
         setInviteValid(true);
+        // Handle dietary restrictions - if it's not a standard option, treat as "Other"
+        const standardOptions = ['None', 'Vegan', 'Vegetarian', 'Kosher', 'Halal', 'Other'];
+        const isStandardOption = standardOptions.includes(response.data.foodRestriction);
+        
         setFormData(prevData => ({
           ...prevData,
           firstName: response.data.firstName,
           lastName: response.data.lastName,
           email: response.data.email,
+          phone: response.data.phone || '',
           brunch: response.data.brunch,
           children: response.data.children,
-          foodRestriction: response.data.foodRestriction
+          foodRestriction: isStandardOption ? response.data.foodRestriction : 'Other',
+          foodRestrictionOther: isStandardOption ? '' : response.data.foodRestriction
         }));
         
         if (response.data.accompanyFirstName != null && response.data.accompanyFirstName != '') {
@@ -131,11 +139,21 @@ const Form = ({locale, inviteId}) => {
     if (challengeSolved) {
       setLoading(true);
       try {
-        console.log(formData);
+        // Prepare data for submission - combine foodRestriction with custom text if "Other" is selected
+        const submissionData = {
+          ...formData,
+          foodRestriction: formData.foodRestriction === 'Other' && formData.foodRestrictionOther
+            ? formData.foodRestrictionOther
+            : formData.foodRestriction
+        };
+        // Remove the separate foodRestrictionOther field from submission
+        delete submissionData.foodRestrictionOther;
+        
+        console.log(submissionData);
         const response = await axios({
           method: 'POST',
           url: '/formSubmit', 
-          data: formData
+          data: submissionData
         });
         
         if (response.status === 200) {
@@ -306,6 +324,17 @@ const Form = ({locale, inviteId}) => {
                 />
               </div>
               <div className="mb-4">
+                <label className="block text-gray-700 mb-2">{translations.form.phone}</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-amber-500 focus:ring focus:ring-amber-200"
+                  placeholder="+33 6 12 34 56 78"
+                />
+              </div>
+              <div className="mb-4">
                 <label className="flex items-center text-gray-700 cursor-pointer">
                   <input
                     type="checkbox"
@@ -452,6 +481,12 @@ const Form = ({locale, inviteId}) => {
                       <td className="py-3 font-medium">{translations.form.email}</td>
                       <td className="py-3 text-gray-700">{formData.email}</td>
                     </tr>
+                    {formData.phone && (
+                      <tr className="border-b">
+                        <td className="py-3 font-medium">{translations.form.phone}</td>
+                        <td className="py-3 text-gray-700">{formData.phone}</td>
+                      </tr>
+                    )}
                     <tr className="border-b">
                       <td className="py-3 font-medium">{translations.form.brunch}</td>
                       <td className="py-3 text-gray-700">{formData.brunch ? (locale === 'en' ? 'Yes' : 'Oui') : (locale === 'en' ? 'No' : 'Non')}</td>
@@ -462,7 +497,11 @@ const Form = ({locale, inviteId}) => {
                     </tr>
                     <tr className="border-b">
                       <td className="py-3 font-medium">{translations.form.foodRestriction}</td>
-                      <td className="py-3 text-gray-700">{formData.foodRestriction}</td>
+                      <td className="py-3 text-gray-700">
+                        {formData.foodRestriction === 'Other' && formData.foodRestrictionOther 
+                          ? `${formData.foodRestriction}: ${formData.foodRestrictionOther}` 
+                          : formData.foodRestriction}
+                      </td>
                     </tr>
                     {formData.accompany && (
                       <>

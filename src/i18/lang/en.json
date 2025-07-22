@@ -33,6 +33,7 @@
       "inviteId": "Your invite number",
       "message": "Please do not forget to let us know if you can make it via the form below",
       "email": "Email Address",
+      "phone": "Mobile Phone Number",
       "firstName": "First Name",
       "lastName": "Last Name",
       "rsvp": "Will you present to our wedding?",
